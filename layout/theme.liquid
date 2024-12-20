@@ -41,6 +41,12 @@
 
     {{ content_for_header }}
 
+    {% if settings.use_google_font and settings.google_font_url != blank %}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="{{ settings.google_font_url }}" rel="stylesheet">
+    {% endif %}
+
     {%- liquid
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
       assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
@@ -100,14 +106,29 @@
       }
 
       :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-        --font-body-style: {{ settings.type_body_font.style }};
-        --font-body-weight: {{ settings.type_body_font.weight }};
-        --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+        {% if settings.use_google_font and settings.google_font_url != blank %}
 
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-        --font-heading-style: {{ settings.type_header_font.style }};
-        --font-heading-weight: {{ settings.type_header_font.weight }};
+          --font-body-family: {{ settings.google_font_name }};
+          --font-body-style: normal;
+          --font-body-weight: 400;
+          --font-body-weight-bold: 700;
+
+          --font-heading-family: {{ settings.google_font_name }};
+          --font-heading-style: normal;
+          --font-heading-weight: 700;
+
+        {% else %}
+
+          --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+          --font-body-style: {{ settings.type_body_font.style }};
+          --font-body-weight: {{ settings.type_body_font.weight }};
+          --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+
+          --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+          --font-heading-style: {{ settings.type_header_font.style }};
+          --font-heading-weight: {{ settings.type_header_font.weight }};
+
+        {% endif %}
 
         --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
         --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};

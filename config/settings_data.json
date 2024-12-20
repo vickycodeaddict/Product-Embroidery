@@ -1,9 +1,12 @@
 {
   "current": {
     "logo_width": 90,
-    "type_header_font": "playpen_sans_n7",
+    "use_google_font": true,
+    "google_font_url": "https:\/\/fonts.googleapis.com\/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap",
+    "google_font_name": "\"Balsamiq Sans\", serif",
+    "type_header_font": "mono",
     "heading_scale": 100,
-    "type_body_font": "noto_sans_display_n4",
+    "type_body_font": "mono",
     "body_scale": 100,
     "page_width": 1200,
     "spacing_sections": 0,
