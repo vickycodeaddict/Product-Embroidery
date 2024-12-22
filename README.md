@@ -9,6 +9,9 @@ Explore the feature live on the example product:
 🔗 [Example T-Shirt Product](https://wiro-practical-vivek.myshopify.com/products/example-t-shirt)  
 Password: **vivek**
 
+### ** PR **
+https://github.com/vickycodeaddict/Product-Embroidery/pull/1
+
 ---
 
 ## **Features**
