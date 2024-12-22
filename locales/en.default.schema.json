@@ -196,6 +196,16 @@
         },
         "body_scale": {
           "label": "Font size scale"
+        },
+        "use_google_font": {
+          "label": "Use Google fonts"
+        },
+        "google_font_name": {
+          "label": "Google fonts Name"
+        },
+        "google_font_url": {
+          "label": "Google Font URL",
+          "info": "Paste the Google Font URL here (e.g., https:\/\/fonts.googleapis.com\/css2?family=Roboto:wght@400;700&display=swap)."
         }
       }
     },
@@ -690,6 +700,12 @@
       },
       "presets": {
         "name": "Custom Liquid"
+      }
+    },
+    "embroidery": {
+      "name": "Embroidery",
+      "presets": {
+        "name": "Embroidery"
       }
     },
     "featured-blog": {

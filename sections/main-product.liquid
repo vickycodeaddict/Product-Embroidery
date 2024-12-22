@@ -461,6 +461,11 @@
                   render 'share-button', block: block, share_link: share_url
                 %}
 
+              {%- when 'embroidery' -%}
+                {% if product.metafields.custom.has_embroidery == true %}
+                  {% render 'product-embroidery', product: product, block: block %}
+                {% endif %}
+
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
@@ -952,6 +957,10 @@
           "info": "t:sections.custom-liquid.settings.custom_liquid.info"
         }
       ]
+    },
+    {
+      "type": "embroidery",
+      "name": "t:sections.embroidery.name"
     },
     {
       "type": "collapsible_tab",

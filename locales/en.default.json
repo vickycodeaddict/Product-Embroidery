@@ -524,5 +524,23 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
-  }
+  },
+  "embroidery": {
+      "section":{
+        "title": "Add Embroidered Name"
+      },
+      "cart": {
+        "label": "Embroidered Name: "
+      },
+      "text": {
+        "label": "Add up to {{ max_chars }} characters"
+      },
+      "color": {
+        "label": "Choose letter colour"
+      },
+      "font": {
+        "label": "Choose font"
+      },
+      "notice": "Unfortunately we can not accept returns or exchanges on embroidered items."
+    }
 }

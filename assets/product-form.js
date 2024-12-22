@@ -21,6 +21,22 @@ if (!customElements.get('product-form')) {
         evt.preventDefault();
         if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
 
+        /** Validation for embroidery fields */
+        const embroideryCheckbox = document.getElementById("expandEmbroidery");
+        const embroideryText = document.querySelector('input[name="properties[embroidery_text]"]').value.trim();
+        const selectedColor = document.querySelector('input[name="properties[embroidery_color]"]:checked');
+        const selectedFont = document.querySelector('input[name="properties[embroidery_font]"]:checked');
+
+        if (embroideryCheckbox.checked) {
+
+            if (!embroideryText || !selectedColor || !selectedFont) {
+                evt.preventDefault();
+                this.handleErrorMessage("Please fill embroidery fields: Embroidery Text, Color and Font.");
+                return false;
+            }
+        }
+        
+
         this.handleErrorMessage();
 
         this.submitButton.setAttribute('aria-disabled', true);
@@ -39,6 +55,14 @@ if (!customElements.get('product-form')) {
           );
           formData.append('sections_url', window.location.pathname);
           this.cart.setActiveElement(document.activeElement);
+
+          if (embroideryCheckbox.checked) {
+            formData.append('properties[Text]', embroideryText);
+            formData.append('properties[Color]', selectedColor.value);
+            formData.append('properties[Font]', selectedFont.value);
+            formData.append('properties[Price]', selectedColor.getAttribute('data-price'));
+          }
+
         }
         config.body = formData;
 

@@ -105,6 +105,22 @@
     "name": "t:settings_schema.typography.name",
     "settings": [
       {
+        "type": "checkbox",
+        "id": "use_google_font",
+        "label": "t:settings_schema.typography.settings.use_google_font.label"
+      },
+      {
+        "type": "text",
+        "id": "google_font_url",
+        "label": "t:settings_schema.typography.settings.google_font_url.label",
+        "info": "t:settings_schema.typography.settings.google_font_url.info"
+      },
+      {
+        "type": "text",
+        "id": "google_font_name",
+        "label": "t:settings_schema.typography.settings.google_font_name.label"
+      },
+      {
         "type": "header",
         "content": "t:settings_schema.typography.settings.header__1.content"
       },

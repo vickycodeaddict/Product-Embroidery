@@ -182,6 +182,11 @@
                               {%- endif -%}
 
                               {%- for property in item.properties -%}
+
+                                {% if item.properties['Text'] or item.properties['Color'] or item.properties['Font']  or item.properties['Price'] %}
+                                  {%  continue %}
+                                {% endif %}
+
                                 {%- assign property_first_char = property.first | slice: 0 -%}
                                 {%- if property.last != blank and property_first_char != '_' -%}
                                   <div class="product-option">
@@ -441,6 +446,25 @@
                           </quantity-popover>
                         </td>
                       </tr>
+                      
+                      {% if item.properties['Text'] and item.properties['Color'] and item.properties['Font']  and item.properties['Price'] %}
+                        <tr>
+                          <td colspan="4">
+                            <div class="bg-lightGray">
+                              <div class="p-6">
+                                  <label>
+                                    <input type="checkbox" class="!w-7 !h-7 text-blue-600 bg-gray-100 border-gray-300 rounded accent-black cursor-pointer" checked>
+                                    <span class="text-black">{{ 'embroidery.section.title' | t }} (+{{ item.properties['Price'] }})</span>
+                                  </label>
+                                  <div class="text-gray text-sm">
+                                    {{ 'embroidery.cart.label' | t }} "{{ item.properties['Text'] }}", {{ item.properties['Color'] }}, {{ item.properties['Font'] }}
+                                  </div>
+                              </div>
+                            </div>
+                            </td>
+                        </tr>
+                      {% endif %}
+                        
                     {%- endfor -%}
                   </tbody>
                 </table>
