@@ -41,6 +41,26 @@
 
     {{ content_for_header }}
 
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lightGray: '#F5F5F5',
+            textPrimary:"#1E1E1E"
+          },
+          fontSize: {
+            sm: ['14px', '20px'],
+
+          }
+        }
+      }
+    }
+  </script>
+    
+
     {% if settings.use_google_font and settings.google_font_url != blank %}
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

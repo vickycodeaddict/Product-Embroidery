@@ -34,6 +34,10 @@
           "disabled": true,
           "settings": {}
         },
+        "embroidery_gpbGxC": {
+          "type": "embroidery",
+          "settings": {}
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -56,6 +60,7 @@
         "description",
         "variant_picker",
         "quantity_selector",
+        "embroidery_gpbGxC",
         "buy_buttons",
         "share"
       ],

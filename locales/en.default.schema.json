@@ -702,6 +702,12 @@
         "name": "Custom Liquid"
       }
     },
+    "embroidery": {
+      "name": "Embroidery",
+      "presets": {
+        "name": "Embroidery"
+      }
+    },
     "featured-blog": {
       "name": "Blog posts",
       "settings": {
