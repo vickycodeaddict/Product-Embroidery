@@ -44,8 +44,10 @@ class CartItems extends HTMLElement {
 
   resetQuantityInput(id) {
     const input = this.querySelector(`#Quantity-${id}`);
+    if(input){
     input.value = input.getAttribute('value');
     this.isEnterPressed = false;
+    }
   }
 
   setValidity(event, index, message) {
