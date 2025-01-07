@@ -26,6 +26,7 @@ if (!customElements.get('product-form')) {
         const embroideryText = document.querySelector('input[name="properties[embroidery_text]"]').value.trim();
         const selectedColor = document.querySelector('input[name="properties[embroidery_color]"]:checked');
         const selectedFont = document.querySelector('input[name="properties[embroidery_font]"]:checked');
+        const embroideryVariant = document.querySelector('input[name="properties[embroidery_variant_id]"]').value.trim();
 
         if (embroideryCheckbox.checked) {
 
@@ -61,6 +62,8 @@ if (!customElements.get('product-form')) {
             formData.append('properties[Color]', selectedColor.value);
             formData.append('properties[Font]', selectedFont.value);
             formData.append('properties[Price]', selectedColor.getAttribute('data-price'));
+            formData.append('properties[EmbroideryVariant]', embroideryVariant);
+
           }
 
         }
@@ -110,7 +113,7 @@ if (!customElements.get('product-form')) {
               );
               quickAddModal.hide(true);
             } else {
-              this.cart.renderContents(response);
+              //this.cart.renderContents(response);
             }
           })
           .catch((e) => {
@@ -121,6 +124,37 @@ if (!customElements.get('product-form')) {
             if (this.cart && this.cart.classList.contains('is-empty')) this.cart.classList.remove('is-empty');
             if (!this.error) this.submitButton.removeAttribute('aria-disabled');
             this.querySelector('.loading__spinner').classList.add('hidden');
+
+            if (embroideryCheckbox.checked) {
+              const embroideryFormData = {
+                items: [
+                  {
+                    id: embroideryVariant,
+                    quantity: 1,
+                    properties: {
+                      attached_with: formData.get('id'),
+                    },
+                  },
+                ],
+              };
+              
+              const embroideryConfig = {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'X-Requested-With': 'XMLHttpRequest',
+                },
+                body: JSON.stringify(embroideryFormData),
+              };
+              
+              fetch(`${routes.cart_add_url}`, embroideryConfig)
+                .then((response) => {
+                  location.reload();
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                });
+            }
           });
       }
 

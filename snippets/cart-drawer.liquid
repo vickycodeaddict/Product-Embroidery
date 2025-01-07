@@ -118,6 +118,9 @@
 
                   <tbody role="rowgroup">
                     {%- for item in cart.items -%}
+                      {% if item.product.handle == 'embroidery' %}
+                        {%  continue %}
+                      {% endif %}
                       <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
                         <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
                           {% if item.image %}
@@ -453,12 +456,25 @@
                             <div class="bg-lightGray">
                               <div class="p-6">
                                   <label>
-                                    <input type="checkbox" class="!w-7 !h-7 text-blue-600 bg-gray-100 border-gray-300 rounded accent-black cursor-pointer" checked>
+                                    <input name="embff[]" type="checkbox" class="!w-7 !h-7 text-blue-600 bg-gray-100 border-gray-300 rounded accent-black cursor-pointer" checked/>
                                     <span class="text-black">{{ 'embroidery.section.title' | t }} (+{{ item.properties['Price'] }})</span>
                                   </label>
                                   <div class="text-gray text-sm">
                                     {{ 'embroidery.cart.label' | t }} "{{ item.properties['Text'] }}", {{ item.properties['Color'] }}, {{ item.properties['Font'] }}
                                   </div>
+                              </div>
+                            </div>
+                            </td>
+                        </tr>
+                      {% else %}
+                      <tr>
+                          <td colspan="4">
+                            <div class="">
+                              <div class="p-6">
+                                  <label>
+                                    <input name="embff[]" type="checkbox" class="!w-7 !h-7 text-blue-600 bg-gray-100 border-gray-300 rounded accent-black cursor-pointer"/>
+                                    <span class="text-black">{{ 'embroidery.section.title' | t }} (+15)</span>
+                                  </label>
                               </div>
                             </div>
                             </td>
