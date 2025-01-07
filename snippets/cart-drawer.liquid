@@ -470,10 +470,11 @@
                       <tr>
                           <td colspan="4">
                             <div class="">
+                              {% assign embroidery = all_products['embroidery'] %}
                               <div class="p-6">
                                   <label>
                                     <input name="embff[]" type="checkbox" class="!w-7 !h-7 text-blue-600 bg-gray-100 border-gray-300 rounded accent-black cursor-pointer"/>
-                                    <span class="text-black">{{ 'embroidery.section.title' | t }} (+15)</span>
+                                    <span class="text-black">{{ 'embroidery.section.title' | t }} (+{{ embroidery.variants.first.price | money_without_currency  }})</span>
                                   </label>
                               </div>
                             </div>
